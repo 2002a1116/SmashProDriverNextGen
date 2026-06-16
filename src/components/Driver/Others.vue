@@ -310,7 +310,7 @@ export default {
         },
         scan_rate:{
             get(){
-                return (device_status.loopcnt/device_status.looptick*1000).toFixed(0);
+                return (device_status.value.loopcnt/device_status.value.looptick*1000).toFixed(0);
             },set(str:string){}
         }
     },

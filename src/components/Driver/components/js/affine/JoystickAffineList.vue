@@ -203,12 +203,16 @@ function canComputeAffineMatrices(sequence) {
     }
     return true;
 }
-let legit = canComputeAffineMatrices(items.value);
+let legit = ref(canComputeAffineMatrices(items.value));
 watch(items,(new_val)=>{
-  legit = canComputeAffineMatrices(items.value);
+  legit.value = canComputeAffineMatrices(items.value);
+})
+watch(show_modal,(new_val)=>{
+  if(!new_val)
+  legit.value = canComputeAffineMatrices(items.value);
 })
 const affine_legit = computed(()=>{
-  return legit?t('affine.legit'):t('affine.illegit');
+  return legit.value?t('affine.legit'):t('affine.illegit');
 })
 // ==================== 数据 ====================
 //const items = ref([])

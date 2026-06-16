@@ -109,9 +109,6 @@ export let js_data=ref(Array<Coord>(2));
 export function std_input_handler(buf:Uint8Array) {
     button_sts.value=buf[2]+(buf[3]<<8)+(buf[4]<<16);
     js_data.value = JsMapper.Unwrap(buf.slice(5,11));
-    //console.log("mapping");
-    if(button_sts.value)
-        console.log(js_data.value);
 }
 export async function controller_reboot(){
     await fw_snd(0xFE, null);
@@ -386,7 +383,7 @@ export class status_pack{
     looptick:number;
     loopcnt:number;
 };
-export let device_status:status_pack = ref(status_pack);
+export let device_status = ref(new status_pack());
 export let raw_js_data = ref(Array<Coord>);
 export let adc_data = ref(Uint16Array);
 export const fw_ver_at_least=0x00020000;
@@ -512,10 +509,10 @@ export async function open_device() {
                     break;
                 case 0xFD:
                     s.writeByteArray(buffer);
-                    device_status.imu_ret = s.readByte();
-                    device_status.imu_id = s.readByte();
-                    device_status.looptick = s.readUint(32);
-                    device_status.loopcnt = s.readUint(32);
+                    device_status.value.imu_ret = s.readByte();
+                    device_status.value.imu_id = s.readByte();
+                    device_status.value.looptick = s.readUint(32);
+                    device_status.value.loopcnt = s.readUint(32);
                     break;
                 default:
                     break;

@@ -40,7 +40,7 @@
                         <n-flex justify="center">
                             <n-flex vertical>
                                 <a href="https://2002a1116.github.io/SmashProWebDriverV2/">固件V1.2.x驱动，已弃用</a>
-                                <a href="https://legacy.smashpro.icu">固件V1.4.x驱动，已弃用，预计2026-7-1关闭</a>
+                                <a href="https://2002a1116.github.io/SmashProWebDriverV3/">固件V1.4.x驱动</a>
                             </n-flex>
                         </n-flex>
                     </n-card>

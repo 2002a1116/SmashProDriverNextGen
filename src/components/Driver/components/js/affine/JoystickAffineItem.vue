@@ -86,8 +86,8 @@ const props = defineProps({
 const notch = defineModel<Coord>("notch");
 const angle = defineModel<Coord>("angle");
 const show = defineModel<Boolean>("showModal");
-const n = reactive(notch);
-const a = reactive(angle);
+const n = ref(notch);
+const a = ref(angle);
 watch(n,(new_val)=>{notch.value = new_val;})
 watch(a,(new_val)=>{angle.value = new_val;})
 
